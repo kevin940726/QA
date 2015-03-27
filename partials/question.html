@@ -2,6 +2,7 @@
 <div class="primary" ng-controller="MainCtrl">
   <div class="question-content">
     <h1 class="text-center"><strong><span class="label label-default">Q</span> {{q['Question']}}</strong></h1>
+    <button ng-click="deleteQues()">Delete</button>
     <p class="lead text-justify">{{q['Question_Des']}}</p>
     <footer class="text-right">- From User {{q['User_Name']}}</footer>
   </div>

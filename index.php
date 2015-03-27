@@ -25,17 +25,17 @@
       $dbpass = '';
       $dbname = 'QA';
 
-      $conn = mysql_connect($dbhost, $dbuser, $dbpass) or die('Error with MySQL connection');
-      mysql_query("SET NAMES utf8");
-      mysql_select_db($dbname);
-      $sql = "SELECT * FROM GENERAL WHERE 'Q_Id'=0";
-      $result = mysql_query($sql) or die('MySQL query error');
-      $q = mysql_fetch_array($result);
+      $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname) or die('Error with MySQL connection');
+      //mysql_query("SET NAMES utf8");
+      $sql = "SELECT * FROM GENERAL WHERE 'Q_Id'=1";
+      $result = mysqli_query($conn, $sql) or die('MySQL query error');
+      $q = mysqli_fetch_assoc($result);
     ?>
     
   </head>
 
   <body ng-controller="MainCtrl">
+    <button ng-click="deleteQues()">Click me</button>
     <div id="fb-root"></div>
 
     <div class="container">
@@ -57,7 +57,7 @@
               <li class="active"><a href="#">隨機題目</a></li>
               <li><a href="#/new">投稿題目</a></li>
               <li><a href="#">關於我們</a></li>
-              <li><a href="" onclick="checkLoginState()">以Facebook登入</a></li>
+              <li><a href="" ng-click="login(isLoggedIn)" ng-bind="loginMsg"></a></li>
             </ul>
             
           </div><!--/.nav-collapse -->
@@ -73,6 +73,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/angular.js"></script>
+    <script src="js/ngFacebook.js"></script>
     <script src="http://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -1,21 +1,23 @@
 <div ng-controller="NewCtrl">
-<form class="form-horizontal">
+<div class="alert alert-success" role="alert" ng-show="isSuccess"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>成功新增新的問題！</div>
+<div class="alert alert-danger" role="alert" ng-show="isWrong"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{errorMsg}}</div>
+<form class="form-horizontal" ng-submit="submitQues()">
   <div class="form-group">
     <label for="inputQuestion" class="col-sm-2 control-label">Question Name</label>
     <div class="col-sm-10">
-      <input class="form-control" id="inputQuestion" placeholder="Question...?">
+      <input class="form-control" ng-model="formdata.Question" id="inputQuestion" placeholder="Question...?">
     </div>
   </div>
   <div class="form-group">
     <label for="inputDescription" class="col-sm-2 control-label">Quesiton Description</label>
     <div class="col-sm-10">
-      <input class="form-control" id="inputDescription" placeholder="Description...">
+      <input class="form-control" ng-model="formdata.Question_Des" id="inputDescription" placeholder="Description...">
     </div>
   </div>
   <div class="form-group">
     <label for="inputAnswer" class="col-sm-2 control-label">Answer</label>
     <div class="col-sm-10">
-      <input class="form-control" id="inputAnswer" placeholder="Answer...">
+      <input class="form-control" ng-model="formdata.Answer" id="inputAnswer" placeholder="Answer...">
     </div>
   </div>
   <div class="form-group">
