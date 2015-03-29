@@ -1,6 +1,3 @@
-<?php
-  session_start();
-?>
 <!DOCTYPE html>
 <html lang="en" ng-app="index">
   <head>
@@ -15,71 +12,57 @@
     <title>Project QA Title</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
     <link href="css/app.css" rel="stylesheet">
-
-    <?php  
-
-      $dbhost = 'localhost';
-      $dbuser = 'root';
-      $dbpass = '';
-      $dbname = 'QA';
-
-      $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname) or die('Error with MySQL connection');
-      //mysql_query("SET NAMES utf8");
-      $sql = "SELECT * FROM GENERAL WHERE 'Q_Id'=1";
-      $result = mysqli_query($conn, $sql) or die('MySQL query error');
-      $q = mysqli_fetch_assoc($result);
-    ?>
-    
   </head>
 
   <body ng-controller="MainCtrl">
-    <button ng-click="deleteQues()">Click me</button>
     <div id="fb-root"></div>
+    
+    <div class="contain-to-grid fixed">
+    <nav class="top-bar" data-topbar role="navigation"> 
+      <ul class="title-area">
+        <li class="name"> <h1><a href="#/">JustQA</a></h1> </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone --> 
+        <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li> 
+      </ul> 
+      <section class="top-bar-section">
+       <!-- Right Nav Section --> 
+      <ul class="right">
+        <li class="active"><a href="#" ng-click="login(isLoggedIn)" ng-bind="loginMsg">Login with Facebook</a></li>
+        <li class="has-dropdown"> <a href="#">Category</a>
+          <ul class="dropdown"> 
+            <li><a href="#">First link in dropdown</a></li>
+            <li class="active"><a href="#">Active link in dropdown</a></li>
+          </ul>
+        </li>
+      </ul> <!-- Left Nav Section --> 
+      <ul class="left">
+        <li><a href="#">隨機題目</a></li>
+        <li><a href="#/new">投稿題目</a></li>
+        <li><a href="#">關於我們</a></li>
+      </ul>
+      </section>
+    </nav>
+    </div>
 
-    <div class="container">
-
-      <!-- Static navbar -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/">Project Q</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">隨機題目</a></li>
-              <li><a href="#/new">投稿題目</a></li>
-              <li><a href="#">關於我們</a></li>
-              <li><a href="" ng-click="login(isLoggedIn)" ng-bind="loginMsg"></a></li>
-            </ul>
-            
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-
-      <div ng-view></div>
+    <div ng-view></div>
 
       
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!--================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/angular.js"></script>
     <script src="js/ngFacebook.js"></script>
     <script src="http://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
     <script>
-      var qid = <?=$q['Q_Id']?>;
-      window.myPostData = <?php echo empty($me) ? 'false' : $data; ?>;
+      $(document).foundation();
     </script>
     <script src="js/app.js"></script>
   </body>

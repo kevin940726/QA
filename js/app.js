@@ -60,7 +60,7 @@ index.controller('MainCtrl', function($scope, $http, $location, $routeParams, $f
   };
 
   $scope.isLoggedIn = false;
-  $scope.loginMsg = "Log in with Facebook";
+  $scope.loginMsg = "Login with Facebook";
   $scope.userid = "Unknown";
   $scope.login = function(isLoggedIn) {
   	if (!isLoggedIn){
@@ -87,7 +87,7 @@ index.controller('MainCtrl', function($scope, $http, $location, $routeParams, $f
         $scope.isLoggedIn = true;
       },
       function(err) {
-        $scope.loginMsg = "Log in with Facebook";
+        $scope.loginMsg = "Login with Facebook";
         $scope.userid = "Unknown";
       });
   }

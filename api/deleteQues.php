@@ -10,7 +10,7 @@
 	use Facebook\FacebookRequestException;
 	use Facebook\FacebookJavaScriptLoginHelper;
 
-	FacebookSession::setDefaultApplication('675227872583604','secret_key');
+	FacebookSession::setDefaultApplication('675227872583604','secret-key');
 
 	$params = json_decode(file_get_contents('php://input'),true);
 	$session = new FacebookSession($params['Token']);

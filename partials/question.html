@@ -1,20 +1,23 @@
 <!-- Main component for a primary marketing message or call to action -->
-<div class="primary" ng-controller="MainCtrl">
-  <div class="question-content">
+<div class="primary row" ng-controller="MainCtrl" data-equalizer>
+  <div class="question-content large-6 columns" data-equalizer-watch>
     <h1 class="text-center"><strong><span class="label label-default">Q</span> {{q['Question']}}</strong></h1>
-    <button ng-click="deleteQues()">Delete</button>
+    <a class="radius button" data-reveal-id="confirmModal">Delete</a>
     <p class="lead text-justify">{{q['Question_Des']}}</p>
     <footer class="text-right">- From User {{q['User_Name']}}</footer>
   </div>
-  <br></br>
-  <div class="questions list-group">
-        <a ng-repeat="choice in c" ng-click="submitAns($index+1)" class="list-group-item" href="" id="Answer_{{$index+1}}"><div class="row">
-          <div class="col-md-2 col-xs-2 vcenter">
-            <h3>{{$index+1}}</h3>
-          </div><!--
-          --><div class="col-md-10 col-xs-10 vcenter">
-            <h3 class="text-left">{{choice}}</h3></div>
-          </div>
-        </a>
+  
+  <div class="large-6 columns" data-equalizer-watch>
+    <ul class="stack button-group round questions">
+      <li ng-repeat="choice in c"><a ng-click="submitAns($index+1)" class="button"><h3>{{choice}}</h3></a></li>
+    </ul>
   </div>
 </div>
+
+<div id="confirmModal" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Are you sure?</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+ng-click="deleteQues()"
